@@ -17,6 +17,7 @@ void setup() {
   lcd.print("Idektep Cobot");
   lcd.setCursor(3, 1);
   lcd.print("Name");
+  lcd.clear();
 }
 
 void loop() {
