@@ -16,13 +16,13 @@ char pass[] = "---------------";
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include "DHT.h"
-#define DHTPIN 23  //Add DHT pin
+#define DHTPIN _____  //Add DHT pin
 #define DHTTYPE DHT22
 DHT dht(DHTPIN, DHTTYPE);
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // 0x27 or 0x3F
 
-#define LDR_Pin 34 //Add LDR pin
-#define Buzzer_Pin 18 //Add buzzer pin
+#define LDR_Pin __________ //Add LDR pin
+#define Buzzer_Pin _______ //Add buzzer pin
 #define L_LED 16
 #define R_LED 17
 
@@ -38,7 +38,7 @@ float temp, humi;
 BLYNK_WRITE(V3) {
   sw_led = param.asInt();
 }
-BLYNK_WRITE(V4) {  //Add virtual pin
+BLYNK_WRITE(_____) {  //Add virtual pin
   sw_buzzer = param.asInt();
 }
 void mySensor()
@@ -47,7 +47,7 @@ void mySensor()
   ldr = map(LDR_value, 0, 4095, 0, 500);
   Serial.print("LDR_value = "); 
   Serial.println(ldr);
-  Blynk.virtualWrite(V0, ldr); //Add virtual pin
+  Blynk.virtualWrite(_____, ldr); //Add virtual pin
 
   ////// รับค่า  Sensor DHT
   humi = dht.readHumidity();     //รับค่าความชื้น
@@ -56,8 +56,8 @@ void mySensor()
   lcd.print("Temp :" + String(temp, 1) + "c");
   lcd.setCursor(0, 1);
   lcd.print("Humi :" + String(humi, 1) + "%");
-  Blynk.virtualWrite(V1, temp); //Add virtual pin
-  Blynk.virtualWrite(V2, humi); //Add virtual pin
+  Blynk.virtualWrite(_____, temp); //Add virtual pin
+  Blynk.virtualWrite(_____, humi); //Add virtual pin
   
   if (sw_buzzer == 1) {
     digitalWrite(Buzzer_Pin, HIGH);
